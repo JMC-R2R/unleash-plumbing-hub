@@ -150,6 +150,13 @@
   .stat{background:var(--ink-dk);border-radius:12px;padding:16px 20px;color:#fff;min-width:150px;flex:1 1 150px;
         background-image:radial-gradient(circle at 90% 0%,rgba(23,180,240,.28),transparent 60%)}
   .stat .big{font-size:30px;font-weight:900;color:var(--accent-lit);line-height:1}
+.tickl.no{color:#ff9d9d}
+.rejbox{margin:8px 0 2px;padding:10px 12px;border:1px solid #6b2b2b;border-radius:10px;background:#2a1515}
+.rejbox label{display:block;font-size:12.5px;color:#ffb3b3;margin-bottom:6px}
+.rejbox textarea{width:100%;background:#1b1020;color:#f4f4f6;border:1px solid #6b2b2b;
+  border-radius:8px;padding:8px;font:inherit;font-size:14px}
+.rejbox .btn{margin-top:8px}
+.rejmsg{margin-left:10px;font-size:12.5px;color:#9ad7a0}
   .stat .lbl{font-size:12px;color:#c4ccd8;margin-top:7px}
 
   /* ---------- tables ---------- */
@@ -611,6 +618,72 @@
   .foot-dot{opacity:.5}
   .foot-bot .savebadge{margin-left:auto}
   @media screen and (max-width:640px){ .cover h1{font-size:23px} .stat{min-width:130px} }
+  /* Article review (stage 2). The client reads the written piece in place, highlights
+     text and leaves a comment that is stamped with their name by the database. */
+  .readbtn{border-color:var(--accent,#17B4F0)!important;font-weight:600}
+  .readbtn .ccount{display:inline-block;min-width:18px;margin-left:6px;padding:0 5px;border-radius:9px;
+    background:var(--accent-fill,#17B4F0);color:var(--on-accent,#fff);font-size:11px;line-height:18px;text-align:center}
+  .artwrap{position:fixed;inset:0;background:rgba(12,20,28,.66);z-index:9100;display:flex;
+    align-items:stretch;justify-content:center;padding:18px}
+  .artwrap[hidden]{display:none}
+  .artsheet{background:#fff;color:#1b2430;width:100%;max-width:1240px;border-radius:14px;
+    display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
+  .arthead{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid #e3e8ee;background:#f7f9fb}
+  .arthead .t{flex:1;min-width:0;font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .arthead .hint{font-size:12.5px;color:#5d6b79}
+  .artx{background:none;border:0;font-size:28px;line-height:1;cursor:pointer;color:#3c4a57;padding:0 4px}
+  .artmain{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 340px;min-height:0}
+  .artbody{overflow:auto;padding:28px clamp(16px,4vw,54px) 60px;font-size:16.5px;line-height:1.72}
+  .artbody h1{font-size:30px;line-height:1.15;margin:0 0 16px}
+  .artbody h2{font-size:22px;margin:30px 0 10px}
+  .artbody h3{font-size:17.5px;margin:22px 0 8px}
+  .artbody img{max-width:100%;height:auto;border-radius:10px;display:block}
+  .artbody figure{margin:20px 0}
+  .artbody figcaption{font-size:12.5px;color:#6a7886;margin-top:6px}
+  .artbody table{border-collapse:collapse;width:100%;font-size:14.5px;margin:16px 0}
+  .artbody th,.artbody td{border:1px solid #dfe5eb;padding:8px 10px;text-align:left;vertical-align:top}
+  .artbody th{background:var(--accent-fill,#17B4F0);color:var(--on-accent,#fff)}
+  .artbody blockquote{margin:22px 0;padding:16px 18px;border-radius:10px;background:#f1f6fa;border-left:5px solid var(--accent,#17B4F0)}
+  .artbody a{color:var(--accent-ink,#0b6c95)}
+  .artbody mark.cmark{background:#fff1a8;border-bottom:2px solid #e3b400;cursor:pointer;padding:0 1px;border-radius:2px}
+  .artbody mark.cmark.res{background:#eef2f5;border-bottom-color:#b7c3cd}
+  .artbody mark.cmark.flash{background:#ffd54d}
+  .artside{border-left:1px solid #e3e8ee;background:#fafbfc;overflow:auto;padding:14px}
+  .artside h4{margin:2px 2px 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5d6b79}
+  .artside .showres{font-size:12.5px;color:#5d6b79;display:flex;gap:6px;align-items:center;margin:0 2px 12px}
+  .ccard{background:#fff;border:1px solid #e1e7ed;border-radius:10px;padding:11px 12px;margin-bottom:10px;cursor:pointer}
+  .ccard.res{opacity:.62}
+  .ccard.flash{border-color:#e3b400;box-shadow:0 0 0 3px #fff1a8}
+  .ccard .who{display:flex;align-items:center;gap:7px;font-size:13px}
+  .ccard .who b{font-weight:700}
+  .ccard .kind{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:9px;background:#eef2f5;color:#5d6b79}
+  .ccard .kind.client{background:#fff1a8;color:#6a5200}
+  .ccard .when{font-size:11.5px;color:#7a8794;margin:2px 0 6px}
+  .ccard .q{font-size:12.5px;color:#5d6b79;border-left:3px solid #e3b400;padding-left:8px;margin:0 0 7px;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .ccard .b{font-size:14px;white-space:pre-wrap;word-break:break-word}
+  .ccard .cact{display:flex;gap:8px;margin-top:8px}
+  .ccard .cact button{font-size:12px;padding:4px 9px;border-radius:6px;border:1px solid #cfd8e0;background:#fff;cursor:pointer}
+  .ccard .resolved-by{font-size:11.5px;color:#4a8a5c;margin-top:6px}
+  .cempty{font-size:13.5px;color:#6a7886;padding:6px 2px;line-height:1.5}
+  .selpop{position:fixed;z-index:9200;background:#1b2430;color:#fff;border:0;border-radius:8px;
+    padding:8px 13px;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.3)}
+  .selpop[hidden],.cform[hidden]{display:none}
+  .cform{position:fixed;z-index:9300;width:min(360px,calc(100vw - 24px));background:#fff;border-radius:12px;
+    box-shadow:0 18px 44px rgba(0,0,0,.35);padding:14px;border:1px solid #dfe5eb}
+  .cform .q{font-size:12.5px;color:#5d6b79;border-left:3px solid #e3b400;padding-left:8px;margin:0 0 9px;max-height:72px;overflow:auto}
+  .cform textarea{width:100%;min-height:96px;font:inherit;font-size:14.5px;padding:9px;border:1px solid #cfd8e0;border-radius:8px;resize:vertical}
+  .cform .row{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:8px}
+  .cform .as{font-size:12px;color:#6a7886}
+  .cform .row button{padding:7px 13px;border-radius:7px;font-weight:600;cursor:pointer;border:1px solid #cfd8e0;background:#fff}
+  .cform .row button.go{background:var(--accent-fill,#17B4F0);color:var(--on-accent,#fff);border-color:transparent}
+  @media screen and (max-width:860px){
+    .artwrap{padding:0}
+    .artsheet{border-radius:0}
+    .artmain{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}
+    .artside{border-left:0;border-top:1px solid #e3e8ee;max-height:38vh}
+    .arthead .hint{display:none}
+  }
 </style>
 </head>
 <body>
@@ -643,6 +716,28 @@
     <div class="gbpcard" id="gbpCard"></div>
     <p class="gbpfoot">Google shows the first two lines before "Read more". We write the important part first.</p>
   </div>
+</div>
+
+
+<div id="artModal" class="artwrap" hidden>
+  <div class="artsheet" role="dialog" aria-modal="true" aria-label="Read and comment on this article">
+    <div class="arthead"><span class="t" id="artTitle"></span>
+      <span class="hint">Highlight any text to leave a comment</span>
+      <button class="artx" type="button" id="artClose" aria-label="Close">&times;</button></div>
+    <div class="artmain">
+      <article class="artbody" id="artBody"></article>
+      <aside class="artside"><h4>Comments</h4>
+        <label class="showres"><input type="checkbox" id="artShowRes"> Show resolved</label>
+        <div id="artComments"></div></aside>
+    </div>
+  </div>
+</div>
+<button class="selpop" id="selPop" type="button" hidden>&#128172; Comment</button>
+<div class="cform" id="cForm" hidden>
+  <p class="q" id="cQuote"></p>
+  <textarea id="cBody" placeholder="What should we change?"></textarea>
+  <div class="row"><span class="as" id="cAs"></span>
+    <span><button type="button" id="cCancel">Cancel</button> <button type="button" class="go" id="cSave">Save comment</button></span></div>
 </div>
 
 <div id="appView" class="hide">
@@ -694,10 +789,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-const CFG = {"sbUrl": "https://tjgrtrazyepvbcmmdhet.supabase.co", "sbKey": "sb_publishable_FeX9cGqiIHCfAlWA_yTJ9g_u_TM48T8", "slug": "unleash-plumbing", "clientName": "Unleash Plumbing", "tabs": [{"key": "strategy", "title": "Strategy", "short": "Strategy", "audience": "both", "enabled": true, "intro": "You appear in 0 of 5 AI engines. Ask ChatGPT, Perplexity, Claude, Gemini or Grok who replaces roofs out east and your name doesn't come up. VIC Metal Roofing and BM Roof Plumbing do. This plan changes that.", "html": "<h3>\ud83d\udccd Your plan \u2014 Google Business Profile, AI Visibility</h3>\n<p>$750 + GST per month. Built to get you cited in AI answers and found on Google Maps.</p>\n<ul><li>\ud83e\udd16 AI visibility \u2014 tracked queries across all five engines</li><li>\ud83d\udccd Google Business Profile \u2014 optimised, then posted to three times a week</li><li>\ud83d\udd27 Technical audit and fixes</li><li>\u270d\ufe0f Two website articles a month</li><li>\ud83d\udd01 Every article repurposed to YouTube and LinkedIn</li><li>\ud83d\udcca Monthly video walkthrough, monthly call, WhatsApp group</li></ul>\n<h3>The two plans above yours</h3>\n<p>\ud83d\udcc8 SEO \u2014 Visibility Growth \u00b7 $1,500 + GST/mo \u2014 everything in your plan, plus new service pages and location pages built for individual suburbs, plus basic link building.</p>\n<p>\ud83d\ude80 AI Visibility Growth \u00b7 $2,200 + GST/mo \u2014 everything above, plus aggressive link building. That's the authority layer that moves the hardest, most competitive queries.</p>\n<p>The difference is simple. Yours wins on profile strength and content the engines can quote. The next one adds pages. The top one adds authority. Each is the foundation for the one above it \u2014 there's no point buying links before the content exists to point them at.</p>\n<h3>\ud83c\udfaf The queries we're going after</h3>\n<p>Not keywords \u2014 queries. Real questions people type into Google or ask an AI engine. Every piece of content is built from one, and the same list is what we measure to see whether you're starting to show up.</p>\n<h3>Ready to hire</h3>\n<ul><li>best roof replacement companies in the Yarra Ranges</li><li>roof plumber Mount Evelyn</li><li>Colorbond roofing installers eastern suburbs Melbourne</li><li>re-roofing contractors Lilydale</li><li>roof leak repair Belgrave</li><li>guttering replacement Croydon</li><li>metal roofing Ringwood residential</li><li>roofing contractor Healesville</li></ul>\n<h3>Weighing up options</h3>\n<ul><li>how much does a Colorbond roof cost in Victoria</li><li>Colorbond vs tile roof \u2014 which is better</li><li>roof restoration vs roof replacement</li><li>is it worth replacing a tile roof with Colorbond</li><li>average cost to replace a roof, Melbourne eastern suburbs</li><li>how to choose a roofing contractor in Victoria</li></ul>\n<h3>Something's wrong</h3>\n<ul><li>why is my roof leaking after heavy rain</li><li>signs you need a new roof</li><li>how long does a Colorbond roof last</li><li>roof condensation in winter, Dandenong Ranges</li><li>what causes gutters to overflow</li><li>storm damage roof repair \u2014 what to do</li></ul>\n<h3>\ud83d\udce6 What you get over three months</h3>\n<ul><li>6 website articles</li><li>36 Google Business Profile posts</li><li>6 LinkedIn articles</li><li>6 YouTube videos</li><li>54 pieces in total, all from the query list above</li></ul>\n<h3>\u26a1 The bit that makes the difference</h3>\n<p>After every piece goes live we submit it in Google Search Console and confirm it actually indexed. The AI blogging tool you've been paying for never did that \u2014 which is why sixty posts haven't moved anything. Published isn't indexed, and indexed isn't cited.</p>\n<h3>\u2705 What we need from you</h3>\n<ul><li>Tick the queries and titles on the Content Calendar to approve them</li><li>Then approve the written copy before anything publishes</li><li>Get the Google Business Profile verification video in</li></ul>"}, {"key": "months", "title": "Month Brief", "short": "Month Brief", "audience": "client", "enabled": true, "intro": "", "html": ""}, {"key": "keywords", "title": "Keywords", "short": "Keywords", "audience": "client", "enabled": true, "intro": "", "html": ""}, {"key": "wins", "title": "Quick Wins", "short": "Quick Wins", "audience": "both", "enabled": true, "intro": "", "html": ""}, {"key": "progress", "title": "Progress", "short": "Progress", "audience": "internal", "enabled": true, "intro": "", "html": ""}], "socials": {}, "watermark": "data:image/png;base64,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"};
+const CFG = {"sbUrl": "https://tjgrtrazyepvbcmmdhet.supabase.co", "sbKey": "sb_publishable_FeX9cGqiIHCfAlWA_yTJ9g_u_TM48T8", "slug": "unleash-plumbing", "clientName": "Unleash Plumbing", "tabs": [{"key": "strategy", "title": "Strategy", "short": "Strategy", "audience": "both", "enabled": true, "intro": "You appear in 0 of 5 AI engines. Ask ChatGPT, Perplexity, Claude, Gemini or Grok who replaces roofs out east and your name doesn't come up. VIC Metal Roofing and BM Roof Plumbing do. This plan changes that.", "html": "<h3>\ud83d\udccd Your plan \u2014 Google Business Profile, AI Visibility</h3>\n<p>$750 + GST per month. Built to get you cited in AI answers and found on Google Maps.</p>\n<ul><li>\ud83e\udd16 AI visibility \u2014 tracked queries across all five engines</li><li>\ud83d\udccd Google Business Profile \u2014 optimised, then posted to three times a week</li><li>\ud83d\udd27 Technical audit and fixes</li><li>\u270d\ufe0f Two website articles a month</li><li>\ud83d\udd01 Every article repurposed to YouTube and LinkedIn</li><li>\ud83d\udcca Monthly video walkthrough, monthly call, WhatsApp group</li></ul>\n<h3>The two plans above yours</h3>\n<p>\ud83d\udcc8 SEO \u2014 Visibility Growth \u00b7 $1,500 + GST/mo \u2014 everything in your plan, plus new service pages and location pages built for individual suburbs, plus basic link building.</p>\n<p>\ud83d\ude80 AI Visibility Growth \u00b7 $2,200 + GST/mo \u2014 everything above, plus aggressive link building. That's the authority layer that moves the hardest, most competitive queries.</p>\n<p>The difference is simple. Yours wins on profile strength and content the engines can quote. The next one adds pages. The top one adds authority. Each is the foundation for the one above it \u2014 there's no point buying links before the content exists to point them at.</p>\n<h3>\ud83c\udfaf The queries we're going after</h3>\n<p>Not keywords \u2014 queries. Real questions people type into Google or ask an AI engine. Every piece of content is built from one, and the same list is what we measure to see whether you're starting to show up.</p>\n<h3>Ready to hire</h3>\n<ul><li>best roof replacement companies in the Yarra Ranges</li><li>roof plumber Mount Evelyn</li><li>Colorbond roofing installers eastern suburbs Melbourne</li><li>re-roofing contractors Lilydale</li><li>roof leak repair Belgrave</li><li>guttering replacement Croydon</li><li>metal roofing Ringwood residential</li><li>roofing contractor Healesville</li></ul>\n<h3>Weighing up options</h3>\n<ul><li>how much does a Colorbond roof cost in Victoria</li><li>Colorbond vs tile roof \u2014 which is better</li><li>roof restoration vs roof replacement</li><li>is it worth replacing a tile roof with Colorbond</li><li>average cost to replace a roof, Melbourne eastern suburbs</li><li>how to choose a roofing contractor in Victoria</li></ul>\n<h3>Something's wrong</h3>\n<ul><li>why is my roof leaking after heavy rain</li><li>signs you need a new roof</li><li>how long does a Colorbond roof last</li><li>roof condensation in winter, Dandenong Ranges</li><li>what causes gutters to overflow</li><li>storm damage roof repair \u2014 what to do</li></ul>\n<h3>\ud83d\udce6 What you get over three months</h3>\n<ul><li>6 website articles</li><li>36 Google Business Profile posts</li><li>6 LinkedIn articles</li><li>6 YouTube videos</li><li>54 pieces in total, all from the query list above</li></ul>\n<h3>\u26a1 The bit that makes the difference</h3>\n<p>After every piece goes live we submit it in Google Search Console and confirm it actually indexed. The AI blogging tool you've been paying for never did that \u2014 which is why sixty posts haven't moved anything. Published isn't indexed, and indexed isn't cited.</p>\n<h3>\u2705 What we need from you</h3>\n<ul><li>Tick the queries and titles on the Content Calendar to approve them</li><li>Then approve the written copy before anything publishes</li><li>Get the Google Business Profile verification video in</li></ul>"}, {"key": "months", "title": "Month Brief", "short": "Month Brief", "audience": "client", "enabled": true, "intro": "", "html": ""}, {"key": "keywords", "title": "Keywords", "short": "Keywords", "audience": "client", "enabled": true, "intro": "", "html": ""}, {"key": "wins", "title": "Quick Wins", "short": "Quick Wins", "audience": "both", "enabled": true, "intro": "", "html": ""}, {"key": "progress", "title": "Progress", "short": "Progress", "audience": "internal", "enabled": true, "intro": "", "html": ""}, {"key": "admin", "title": "Admin", "short": "Admin", "audience": "admin", "enabled": true, "intro": "", "html": ""}], "socials": {}, "watermark": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABXCAMAAACJMYjxAAAAgVBMVEVHcEwek8gek8gek8jU19glirkjj8FSka8ek8koiLS0wMUjjb3U19gejsEeksa9x8sekMPT1tgdkscfj8Ihjb4fkscfkcUfksbDy87Kz9AeksfS1tfHz9LR1dbM0dPIz9EklsnQ1NbP1NUcirzJz9HM0tSYwNMek8jU19gek8kelMk3EOIGAAAAJ3RSTlMA9u7i+Bs/BvwPEibtTrojbt/WXzGUoa0zZsfNQ7qPVYGqmoZ2gawaCNDdAAARM0lEQVR42uxbiZaquhKVMcwgM6g4gMvh/z/wJakKJIjap8+763b37TprHQVJ7Gyqdu2q4Gr1a7/2HzLXHs36ReOlkbzSNTS9TXzyC8lzt0rS24WZQ/9dLtovXM/NLzUKka5f0O43J+3zX7iW3CpLmTdFdpg6l9Eco/iF69GtCuZRek9pPY8ktBhc9i9cCrOHLQXIaUMOi1VoElqXm1Ha7i9Gwqx+dCtkekNB66ZXIcBFLH+y/yKCxGZx56QZkTwtvaimRxnDxm/TyewfKTFfcrTbMzfSSl85m1eaipajtZm1ynXpTPgjJaZRhu5Tt6rArdzF0FTxapPwh4JFtYBz0aYosp7oUIqVVi343oy4uGmG8yPB8kudqqZslAHagsAkOdehRuI+T5HP7ceA5TJpyUCQouk+j0bqe7cnboWAz4nrR4LFIHJaLiaVaFKiEXSo0b9oL1iF/tPB4vEzqSZbVuRjNLqgQ6PX8tzNjJ8NFrhVSCT/0JT6hUXjXIc+F2FPicvJfoLE1C56IasmMktsjh4lkVTevMkUT4kryr65hme4OOkchAf/YEcqoi+mPDwjLq5Tv7MO1R7EuNSskq3NPthMICRLn/LW920Qsp7UTYhxL45j9p8nXE7xj0VEP0FcLGN8S7iY91DVhEf79frodev1eUljPpY3q7imRsTLW8ecnOs79lN5eSOJ8ca87rzT9XoiD8Xxkg4l5yAINjE50ped9wfE9R37qUw/arJqaoKAelYQdJKGKLlvLZY3pLter+uY7OjLxlv4/Dlx8TnL79NP5TGminGvrmNCgypWKO2iIvoI1vEJWNj2eu5dY4PwW+hQFQQSN82W1E1Tz8qbw3K2fwvWS+L6PnCBDp2L8cY0KWeZJoah2mZfsO0wDI1H9uyF/KniEqkx+urCi7U6F0AQBA9gWYePlTfvoj29vIGrTayvS15chy6J8e1u15FhtxuE770pbz7gWfOq/BlcX1V4uUm61BRmutvzvBX9j4g2zevy5gOchcynvUHr/kV1Km91vhPj3PeWEf0D6aBUn+/sK+pUpkNvaeK+9T1W3uRvcP8oWB8gLi68vphOZVrgRVNYzvdG8i6pv1Hwqqu+JS7om32djWze6nwHAq+BpILxhb2sDRfKhQ/YlxFeCzp02fc+4lafapt9wG5fA668NIz0jWqizG5Qi/6Jqo2EVfQhq5J/X6ayBzTeqj/rn3x+g3zQ3N8Hlv6luq4vSymc8pLZk02msO/7v94kCIuiWFDycdNNNuxjrCiHrjtvP+0b3vl0OseP33Xuuib+c6wy4367tRMAiXO73Z5sMpHyfr9ryV/enZL1Bx7uRr0zr7KtT7xbEa/Z+/qzX1YHdPijEGnYNxz/+BbkTN/dCyLhwVLucqa3WpZgqr/jAD7J5TCH8HSd24bd+i1brdl89sv2Jle689PddfH0O0uYunMmZ3H5UtrlBJKzdH3v/w4sPokzc0/CPWhmrB89sDfB9rNezFF5qAfc3fVtmfAkJqgj2epSbuUyHpn2f9gH5pPo84f2tjwITTARifGKl9Wf8AFBWbvFePOOG2rdn950cKR0cqSQl/SJnKCn972jhighZCmhvz5XOOM3TqcJ9yCz2zNrzpsrOpTH372pfpS/UTkAfx3gvHSJx8xdHv98HfDUYTSOIxwPDeiXWGFfVlWRYfXnRhKyrp2UVVT1oSWL0KynUrHss3yckV5X0OuKBOs0mCRyiZ8VbG4Yjh4kiLzmGJl7IOhrR+ItM4EZqccD+sn5tDueBnZM4j0/aGpP8leTYr49H+k1mGFXbDbhrN626Y7HrpErLK+m53bHTqRk2ZGcfvK0iv0eJPX5yvtUu9PDO9to4tTMi33O724W6XwT/q61o5awS8O5s415OgJ7DHgdNMhhEk5ZvdWza2+4e0HAg0YWAbqnq+QEfd2TE4tOEY1et6YHNUet22DQBrttfVqLgyOsfYBbsMVMu4amIp9tA8l22ATqEPrxfhdMKVl6KLhnuU+bWAjwYJ7GViO1hxjH2LpAlj3VN5VfwPgkk34ZcXci5jKWssPQ5mISrZ/aBmkuUvy0wwjEHNQrfFWj8WwisHEnp4W1crAf/XUzjB8EPK3CbJSySLMx5SEEbkUgzzM1bUnEn8mfWIgvhSkJa7aRwvJjIkLUVzskXDSRZNYHoLxnVfy62x1/vlS6MMldk6pgh92ahv/RzSxdxR6mrXqNy5vWSlk7PprXp8aEB1wZSIvnzgl35ky8bibtYk7+6slgrzqSJBRASWQrwmn4ohltChhQjECCGf7KivBhWEMH0Cq6XNuABw+iCEdUBCZx0qqMwEvpWEi//EltXWxPU6xPqkIAcI4oKI6ER6NQW7DWYeWBNDPXm8k/2AFi04gr2ekRsEGILzob3CFpyMB82sSJApx0zKXckS6SUBBKAj4wEt+1YCOYCiOUYC4kAafNct/m/udQENySPcKdZpZLRxgAFoRt6bvEzVucGCahwdeHtng494ApflQIAANdzhZ9QESl2DUCPuMfrofYixsMtPW59rw95NIOUaHXHpvt9gyA7GjwneHOwB0J2JDtDoTdCicNum1dY/SOf9WyJE0tl4NmQAWXYRLgEuxSIAaVP+U2CgKxQ2r4AGQL2rXnk0CMh4bjOPQ6mMSJ+JU+IFegB+083iXw6pOJgQSCYu8pIhLlNwIM3jiYEDL8+wFiuvIzBNLABhLwIzoJzhYDZo005IiJBubBEcLfSXkTlIO9OvQJUNlYBAE4CWROLXGrkZapHSSpMfbl+ICMA3nXD7yRQ+yEmgXIj6P5zaJggSRdH7nt4I6aAybFdS2iURKaO0943UrCh0jVQLfi7fyrqVAd9ROcLQbq8yRBdgJ8zIFIJwVY6Ej+TEkcVokmQRDiAUhSG4DssVmUyGAR18rDBMSCnkMReNHaQ2gJdUEA3AQD3+bQHUCSzowuQwgKxEUWmh1RCiGgob1KanDlJpblCAULZ1OqThyiujCkGRH9EBOTJF2Bkgg5CzMmmk7qOUowC0K3LcHSsVyiKrOk6UCD1OfQWI6m582iA2hS7pbOWDFwsLRsoYq+7mrB8ycyyFDgIpVCCEhtPSM1uPKsaDcKXQMabglsjpk5iBEKdFDbSC0HjoeBPoEgkgoyJkrSCQJp14lmubwwtIukKGgyTDR5q6Vi6hMmGb8xg/oJPEhJ2Md6SluqvOfIBVuIop0cmrgsInoKeKVSJ248EdtH2e3OcG5Q84xSWfaOWhijknAFlU8n7yXw+uXgL+zZ0Qw5KlJHb3WIZZYhlZ2pTPBfJteJ1M/qQEVqfdx74xKCrSLvUWjGEEzdSqEchdTQlURVAOieRLFQy2ALHzoqlSjMel5JPiM1AACPgijdBRvXjuwE1+iGbD0JIckZLS0kOdScxlix4yjCNlFKcfDSCmXUsQHbb7Ek8xCXWmQ3WZI213loCk0rSG0Ur+o1Mcy2BDbiqTTDxFdAtBm+2lWgxU/hSCBmwO+k4L++yeHw4MvmgkxNDznbHODBjbO69iEyNARMt4EMR8riTuschPB5aP5ikQN/9CBT8RncRpCvyj/I3CIpyg0/OgBju3nkwUFxJaGUa1koTP0ZBC9XugscJLp2IUmTR62A+Oggy8gBCI8beyjED/sUwYJJKkUTa+FMkk49LsRliYpVllK6XoKqQI90M+RFbJ8edC6VqcHU0RHpRYQxND7HyhAJuSR+Ki1JtFQA2ZIkMs+5eZhlmc8BdSp3alQ7B7+KojYSoWwA4nwS56AUV4YvJOlDpxxwEYys5LRakV5ynS1IDfU7XgKsT/1NZAsFbFQVtSxRYMRY3MP6HRQ9BKoUUeuIJflI9iDBElSVAIzbG+xnqjbIT2g+QPFs2CChCrWZEcr6DYvN1lXoQzK8+bA89Kw9qk81NOWAG6kKwAKQSRMghPhxvaRz5buGI0YdgapRP9i+5YfQdWGyXYk0ACmD4BqR1IqcDuFPajuFi1j4hLjwrJmD4F7+1871NymOAtH8kCDGRAyQOFlzoqO1e/f9P+BBgKbRODuzNVVXdWX+2SWmSXgDzeN1Q2eD59SlVOW+EnCSblAqr5I+BCXCJOhZ2HTYUL8INGuc228o6S0o1b+m0253vGy9gkD9zw7Ja5ZQfgfa6nIAi+hJvbRgZvuyK3PHJdsgDJR4RWJc8+DJvl8JrwtvYoUrB9Z6HIbRKQ5j7WfWf4pWqWGmFeuWecrGsN5vIDxj94HCWIEPeH6/nyYn7q1udJN4qRuuAJALMZDVfu8avvprA2P76tXF1OQWuMt+i2Ub5ErmRoWdMBICPAxFNDoSVUGRCF0WXcfLreIX9LwKum2UA03Vd5TUTQvVnUqahrHsMDjcRX7Ou+iuEcVI1tkHm8OUKlMrYwdcP50SAtg4xuTiJtGT3gt2+SwlJJTUdQYvt8w3E6rpMx/xnnirFDudIU0jlmH2A5FDu9DFYbsc8oSRRq+YtG4vuzDWEpYUKohUdHN5sAs8/pBIrzFg9raNj+/vPKkh3qHlf6/9MROm5VaaCk3itqRNf7JHWs2TG9NecDZLmHCOB9RjtxJ6ztGMeWT18825krICvd8WLSW11/UhvHKOuvvxvA2a3GWO5b/NNsCScAWnvSk4Yrk5TcFuO7lFwc7+arzS/E8Ihh1tyYF9ckLi9scpcYTui+bVb1l2Y4zTSME5FzXkQghbcDc9DJL3bTv0PCbW0drdUuheRhrd25wfc9Pl20gr00B8gza2WGW7mbc/sCx6mum8n6+O18uE4i0HbJNWQI9vcaOCDetM03S5hnjPZq714EwOEC0yhWOo7OLec1nypJSRuibsa+ke1BHOh1s0+8TN+2c+GzHd/Fko3NjRD0OEDwYUppdpk72uxTTNm83fuXk1cEpY1uu6B2vveImN1h7OK6zgvK7lxIhfq+l29fHI7dsLlWfXHS9zJPZ1Pcl8S8nv9oXVh6lvCK1AzD7JDii9S+Whz3NyaPJ0MlXTh5Qg+vSFaYVPvyUtZL//f0Y/+m6koJ1nsrra/rh8BapMKnPpGpWHHuXeMt4POuZICPs0SC9CgVTdKE6ZjptXmeiHfnEjXa1VrHCjzQXp88SWOBgRruJvmZDooyq0OKmzpcJsDI3S5qV4Z+3mcLrerm/H3dcoXZMXYzencrg1d5d3Za5Ckam8NHdkTCAsxzE0x5TQ+q9o6i6qMsZuLMqFw/qo4lLA60hro/vBSppSPAqP9Vw2sL+FqqjaVi2OVFU4wbGCvKF3Ywy6tnlJ8w0bfBoDBV8HOYWqn33dFKCqVqbB9QCJXfZnCQlsKVg/xyqCJcuyIoIvbLljg2AMvpuY9jBorhwIGi2NgZRW9SNYVPO49ewZWIoTWuFM9u/Y0tDk+VgWobOwdi0yMoLIKXIDI18HNd2AVXSjXASrzIcSwGrykfBh4Au9vBmGeHorabnQ0AHk2CsF8TOu0x4JYJGh5pp+DJZBZ8BZ+N8FVjnkIwyfYc0z0kHYzDY6e1/3EayWw1buFCzV5msEVkf4uFYLeaeESd4GvOtWx7W8KVVSQm8QFhBCHsESo+ohfYr1CKxYMK+pRVt9O1ijHNeQxs3zUagcPqXu8nfRgY5jwNL474jB0lUZlWRjp5t+CSzS1zS2iQw4uTwdhnKoje8TD2DRXshqELFnoek5VtxLSmMv/S6wypaJAlw46YsiRyc9ia7ICxX/vDkGSyGBr9BUF5B7QpuuKIpxYbcL1YNWUGEKVj2aOUuDS+Q9ejKCJXviHJoHq9cw7VHwZVSY16Btyt8DFjPTD0PH/bOqafBkXDd4Gqkr7LNlNCPmB1MNS+wWtyRQiSqkyfZYdzYsXXwyq2Hg1XNwLngGaUziQGbYGL2f/R/PBKd/8Mhr69x/cv0LIzVixBuGmgIAAAAASUVORK5CYII="};
 const sb = supabase.createClient(CFG.sbUrl, CFG.sbKey);
 
-let ME = null, ITEMS = [], INTERNAL = {}, STAFF = [], TABDOCS = {},
+let ME = null, ITEMS = [], INTERNAL = {}, STAFF = [], TABDOCS = {}, RELEASED = false,
+    EVENTS = [], ACTIONS = [],
     KEYWORDS = [], PROMPTS = [], CLIENT_ID = null, CLIENT_NAME = '', TABLIST = [],
     SOCIALS = {}, WATERMARK = '', CLIENTPEOPLE = [], WINS = [], OUTBOX = [];
 
@@ -872,6 +968,223 @@ $('gbpClose').addEventListener('click', closeGbp);
 $('gbpModal').addEventListener('click', e => { if (e.target.id === 'gbpModal') closeGbp(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('gbpModal').hidden) closeGbp(); });
 
+/* ---------- Article review: read the written piece, highlight, comment ----------
+   Comments are anchored by the quoted text plus a little context either side, so a
+   highlight survives the article being re-saved as long as the passage itself stands.
+   Author and name are set by ch_add_comment from the session, never sent by the page. */
+let ARTICLES = {}, OPENCOMMENTS = {}, ART = null, ARTCOMMENTS = [], PENDINGSEL = null;
+
+async function loadArticleIndex(){
+  const [a, c] = await Promise.all([
+    sb.from('ch_item_articles').select('item_id,version,updated_at').eq('client_id', CLIENT_ID),
+    sb.from('ch_item_comments').select('item_id,status').eq('client_id', CLIENT_ID)
+  ]);
+  ARTICLES = {}; OPENCOMMENTS = {};
+  (a.data || []).forEach(r => { ARTICLES[r.item_id] = r; });
+  (c.data || []).forEach(r => { if (r.status === 'open') OPENCOMMENTS[r.item_id] = (OPENCOMMENTS[r.item_id] || 0) + 1; });
+}
+
+const cWhen = t => { const d = new Date(t);
+  return d.toLocaleDateString('en-AU', {day:'2-digit', month:'2-digit', year:'numeric'}) + ' '
+       + d.toLocaleTimeString('en-AU', {hour:'numeric', minute:'2-digit'}); };
+
+async function openArticle(itemId){
+  const r = ITEMS.find(x => x.id === itemId);
+  const { data, error } = await sb.from('ch_item_articles').select('item_id,html,version,updated_at')
+    .eq('item_id', itemId).maybeSingle();
+  if (error || !data) { badge('Could not open the article.','err'); return; }
+  ART = { id: itemId, title: r ? r.title : '' };
+  $('artTitle').textContent = ART.title;
+  $('artBody').innerHTML = data.html;
+  $('artBody').querySelectorAll('a[href^="http"]').forEach(x => { x.target = '_blank'; x.rel = 'noopener'; });
+  $('artModal').hidden = false; document.body.style.overflow = 'hidden';
+  $('artBody').scrollTop = 0;
+  await loadComments();
+}
+
+function closeArticle(){
+  $('artModal').hidden = true; document.body.style.overflow = '';
+  hideSel(); $('cForm').hidden = true; ART = null;
+  loadArticleIndex().then(updateReadBadges);
+}
+
+// Keep the open-comment count on each card in step without rebuilding the month.
+function updateReadBadges(){
+  document.querySelectorAll('[data-read]').forEach(b => {
+    const n = OPENCOMMENTS[b.dataset.read] || 0;
+    let c = b.querySelector('.ccount');
+    if (!n) { if (c) c.remove(); return; }
+    if (!c) { c = document.createElement('span'); c.className = 'ccount'; b.appendChild(c); }
+    c.textContent = n;
+  });
+}
+
+async function loadComments(){
+  const { data, error } = await sb.from('ch_item_comments').select('*')
+    .eq('item_id', ART.id).order('created_at', {ascending: true});
+  if (error) { badge('Could not load comments.','err'); return; }
+  ARTCOMMENTS = data || [];
+  OPENCOMMENTS[ART.id] = ARTCOMMENTS.filter(c => c.status === 'open').length;
+  paintMarks(); paintComments();
+}
+
+/* Text-node walk with running offsets, so a quote can be found and wrapped even when
+   it crosses bold text, links or list items. */
+function textIndex(root){
+  const nodes = [], w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let pos = 0, n;
+  while ((n = w.nextNode())) { nodes.push({ n, start: pos }); pos += n.nodeValue.length; }
+  return { nodes, text: nodes.map(x => x.n.nodeValue).join('') };
+}
+
+function locate(text, c){
+  const withCtx = (c.prefix || '') + c.quote;
+  let i = c.prefix ? text.indexOf(withCtx) : -1;
+  if (i >= 0) return i + c.prefix.length;
+  return text.indexOf(c.quote);
+}
+
+function wrapRange(root, start, end, cls, id){
+  const { nodes } = textIndex(root);
+  for (const { n, start: s } of nodes) {
+    const e = s + n.nodeValue.length;
+    if (e <= start || s >= end) continue;
+    let node = n;
+    const a = Math.max(0, start - s), b = Math.min(n.nodeValue.length, end - s);
+    if (b < node.nodeValue.length) node.splitText(b);
+    if (a > 0) node = node.splitText(a);
+    if (!node.nodeValue.trim()) continue;
+    const m = document.createElement('mark');
+    m.className = cls; m.dataset.c = id;
+    node.parentNode.insertBefore(m, node); m.appendChild(node);
+  }
+}
+
+function paintMarks(){
+  const root = $('artBody');
+  root.querySelectorAll('mark.cmark').forEach(m => { m.replaceWith(...m.childNodes); });
+  root.normalize();
+  const showRes = $('artShowRes').checked;
+  ARTCOMMENTS.forEach(c => {
+    if (c.status === 'resolved' && !showRes) return;
+    const { text } = textIndex(root);
+    const i = locate(text, c);
+    c._found = i >= 0;
+    if (i >= 0) wrapRange(root, i, i + c.quote.length, 'cmark' + (c.status === 'resolved' ? ' res' : ''), c.id);
+  });
+  root.querySelectorAll('mark.cmark').forEach(m => m.addEventListener('click', () => focusComment(m.dataset.c, 'card')));
+}
+
+function paintComments(){
+  const showRes = $('artShowRes').checked;
+  const list = ARTCOMMENTS.filter(c => showRes || c.status === 'open');
+  if (!list.length) {
+    $('artComments').innerHTML = '<p class="cempty">No comments yet. Highlight any words in the article and press <b>Comment</b> to suggest a change.</p>';
+    return;
+  }
+  $('artComments').innerHTML = list.map(c => {
+    const mine = c.author_id === ME.id;
+    const acts = [];
+    if (ME.kind === 'internal') acts.push('<button type="button" data-res="'+c.id+'" data-to="'+(c.status==='open'?'1':'0')+'">'
+      + (c.status === 'open' ? 'Resolve' : 'Reopen') + '</button>');
+    if (mine && c.status === 'open') acts.push('<button type="button" data-del="'+c.id+'">Delete</button>');
+    return '<div class="ccard'+(c.status==='resolved'?' res':'')+'" data-card="'+c.id+'">'
+      + '<div class="who"><b>'+esc(c.author_name)+'</b><span class="kind '+esc(c.author_kind)+'">'
+      + (c.author_kind === 'client' ? 'Client' : 'Ready to Rank') + '</span></div>'
+      + '<div class="when">'+esc(cWhen(c.created_at))+'</div>'
+      + '<p class="q">'+esc(c.quote)+(c._found === false ? ' <i>(this passage has since changed)</i>' : '')+'</p>'
+      + '<div class="b">'+esc(c.body)+'</div>'
+      + (c.status === 'resolved' ? '<div class="resolved-by">Resolved by '+esc(c.resolved_name||'')+' · '+esc(cWhen(c.resolved_at))+'</div>' : '')
+      + (acts.length ? '<div class="cact">'+acts.join('')+'</div>' : '')
+      + '</div>';
+  }).join('');
+  $('artComments').querySelectorAll('[data-card]').forEach(el => el.addEventListener('click', e => {
+    if (e.target.closest('button')) return; focusComment(el.dataset.card, 'mark'); }));
+  $('artComments').querySelectorAll('[data-res]').forEach(b => b.addEventListener('click', async () => {
+    const { error } = await sb.rpc('ch_resolve_comment', { p_id: b.dataset.res, p_resolved: b.dataset.to === '1' });
+    if (error) { badge('Could not update the comment.','err'); return; }
+    badge(b.dataset.to === '1' ? 'Resolved' : 'Reopened','ok'); loadComments(); }));
+  $('artComments').querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {
+    if (!confirm('Delete this comment?')) return;
+    const { error } = await sb.rpc('ch_delete_comment', { p_id: b.dataset.del });
+    if (error) { badge('Could not delete the comment.','err'); return; }
+    badge('Deleted','ok'); loadComments(); }));
+}
+
+function focusComment(id, target){
+  const card = $('artComments').querySelector('[data-card="'+id+'"]');
+  const marks = $('artBody').querySelectorAll('mark.cmark[data-c="'+id+'"]');
+  if (target === 'card' && card) { card.scrollIntoView({block:'nearest', behavior:'smooth'}); card.classList.add('flash'); setTimeout(()=>card.classList.remove('flash'),1400); }
+  if (target === 'mark' && marks[0]) { marks[0].scrollIntoView({block:'center', behavior:'smooth'}); }
+  marks.forEach(m => { m.classList.add('flash'); setTimeout(()=>m.classList.remove('flash'),1400); });
+}
+
+function hideSel(){ $('selPop').hidden = true; }
+
+function captureSelection(){
+  const sel = window.getSelection();
+  if (!ART || !sel || sel.isCollapsed || !sel.rangeCount) { hideSel(); return; }
+  const range = sel.getRangeAt(0), root = $('artBody');
+  if (!root.contains(range.commonAncestorContainer)) { hideSel(); return; }
+  const quote = sel.toString().replace(/\s+/g, ' ').trim();
+  if (quote.length < 2) { hideSel(); return; }
+  if (quote.length > 2000) { badge('Select a shorter passage (under 2,000 characters).','err'); hideSel(); return; }
+  const pre = document.createRange(); pre.setStart(root, 0); pre.setEnd(range.startContainer, range.startOffset);
+  const startAt = pre.toString().length;
+  const { text } = textIndex(root);
+  const raw = sel.toString();
+  PENDINGSEL = { quote: raw.trim() === raw ? raw : raw.trim(),
+                 prefix: text.slice(Math.max(0, startAt - 40), startAt),
+                 suffix: text.slice(startAt + raw.length, startAt + raw.length + 40) };
+  if (raw.length !== PENDINGSEL.quote.length) {
+    const lead = raw.length - raw.trimStart().length;
+    PENDINGSEL.prefix = text.slice(Math.max(0, startAt + lead - 40), startAt + lead);
+  }
+  const rect = range.getBoundingClientRect();
+  const pop = $('selPop');
+  pop.hidden = false;
+  pop.style.top = Math.max(8, rect.top - 44) + 'px';
+  pop.style.left = Math.min(window.innerWidth - 130, Math.max(8, rect.left + rect.width / 2 - 55)) + 'px';
+}
+
+document.addEventListener('mouseup', e => { if (!e.target.closest('#selPop,#cForm')) setTimeout(captureSelection, 10); });
+document.addEventListener('touchend', e => { if (!e.target.closest('#selPop,#cForm')) setTimeout(captureSelection, 250); });
+$('artBody').addEventListener('scroll', hideSel);
+
+$('selPop').addEventListener('click', () => {
+  if (!PENDINGSEL) return;
+  const pop = $('selPop').getBoundingClientRect();
+  hideSel();
+  $('cQuote').textContent = PENDINGSEL.quote;
+  $('cBody').value = '';
+  $('cAs').textContent = 'Signed as ' + (ME && ME.name ? ME.name : 'you');
+  const f = $('cForm'); f.hidden = false;
+  const w = f.offsetWidth, h = f.offsetHeight;
+  f.style.left = Math.min(window.innerWidth - w - 12, Math.max(12, pop.left - w / 2 + 55)) + 'px';
+  f.style.top = Math.min(window.innerHeight - h - 12, Math.max(12, pop.bottom + 8)) + 'px';
+  $('cBody').focus();
+});
+$('cCancel').addEventListener('click', () => { $('cForm').hidden = true; PENDINGSEL = null; });
+$('cSave').addEventListener('click', async () => {
+  const body = $('cBody').value.trim();
+  if (!body) { $('cBody').focus(); return; }
+  $('cSave').disabled = true;
+  const { error } = await sb.rpc('ch_add_comment', { p_item_id: ART.id, p_quote: PENDINGSEL.quote,
+    p_prefix: PENDINGSEL.prefix, p_suffix: PENDINGSEL.suffix, p_body: body });
+  $('cSave').disabled = false;
+  if (error) { badge('Could not save the comment.','err'); return; }
+  $('cForm').hidden = true; PENDINGSEL = null; window.getSelection().removeAllRanges();
+  badge('Comment saved','ok'); loadComments();
+});
+$('artShowRes').addEventListener('change', () => { paintMarks(); paintComments(); });
+$('artClose').addEventListener('click', closeArticle);
+$('artModal').addEventListener('click', e => { if (e.target.id === 'artModal') closeArticle(); });
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (!$('cForm').hidden) { $('cForm').hidden = true; return; }
+  if (!$('artModal').hidden) closeArticle();
+});
+
 async function boot(){
   const { data:{ session } } = await sb.auth.getSession();
   if (!session) { $('loginView').classList.remove('hide'); $('appView').classList.add('hide'); return; }
@@ -883,17 +1196,19 @@ async function boot(){
     ME = { kind:'client', name: clientRow.full_name, clientId: clientRow.client_id, id: session.user.id };
   } else {
     const { data: staffRow } = await sb.from('tt_people')
-      .select('name, role_title').eq('id', session.user.id).eq('active', true).maybeSingle();
+      .select('name, role_title, hub_admin').eq('id', session.user.id).eq('active', true).maybeSingle();
     if (!staffRow) {
       await sb.auth.signOut();
       $('loginView').classList.remove('hide'); $('appView').classList.add('hide');
       $('loginErr').textContent = 'That login has no access to this hub.';
       return;
     }
-    ME = { kind:'internal', name: staffRow.name, clientId: null, id: session.user.id };
+    ME = { kind:'internal', name: staffRow.name, clientId: null, id: session.user.id,
+           admin: staffRow.hub_admin === true };
   }
 
-  const { data: c } = await sb.from('tt_clients').select('id,name').eq('slug', CFG.slug).maybeSingle();
+  const { data: c } = await sb.from('tt_clients')
+    .select('id,name,released_to_client').eq('slug', CFG.slug).maybeSingle();
   if (!c) {
     $('loginErr').textContent = ME.kind==='client'
       ? 'This hub is not the one linked to your login.'
@@ -902,6 +1217,14 @@ async function boot(){
     $('loginView').classList.remove('hide'); $('appView').classList.add('hide');
     return;
   }
+  if (ME.kind === 'client' && c.released_to_client !== true) {
+    $('loginView').classList.remove('hide'); $('appView').classList.add('hide');
+    $('loginErr').textContent =
+      'Your plan is being finalised. We will email you the moment it is ready to review.';
+    await sb.auth.signOut();
+    return;
+  }
+  RELEASED = c.released_to_client === true;
   CLIENT_ID = c.id;
   CLIENT_NAME = c.name || '';
   SOCIALS = CFG.socials || {}; WATERMARK = CFG.watermark || '';
@@ -926,6 +1249,7 @@ async function loadData(){
     sb.from('ch_prompts').select('*').eq('client_id', CLIENT_ID).order('sort_order')
   ]);
   ITEMS = q.data || []; KEYWORDS = kw.data || []; PROMPTS = pr.data || [];
+  await loadArticleIndex();
   if (q.error) badge('Could not load the calendar.','err');
 
   // The client's own people, for the client-side reviewer picker. Loaded for
@@ -1024,6 +1348,7 @@ function expandTabs(){
   for (const t of CFG.tabs) {
     if (!t.enabled) continue;
     if (ME.kind !== 'internal' && t.audience === 'internal') continue;
+    if (t.audience === 'admin' && !ME.admin) continue;
     if (t.key !== 'months') { out.push(Object.assign({}, t)); continue; }
     if (!months.length) {
       out.push(Object.assign({}, t, {key:'month:none', monthKey:null,
@@ -1045,7 +1370,7 @@ function buildTabs(){
     '<button class="tab-btn'+(i===0?' active':'')+'" data-key="'+esc(t.key)+'">'
     + '<span class="tn">'+esc(t.num)+'</span>' + esc(t.short)
     + (ME.kind==='internal' ? '<span class="aud '+t.audience+'">'
-        + (t.audience==='internal'?'Int':(t.audience==='client'?'Client':'Both')) + '</span>' : '')
+        + (t.audience==='admin'?'Admin':(t.audience==='internal'?'Int':(t.audience==='client'?'Client':'Both'))) + '</span>' : '')
     + '</button>').join('');
   $('panels').innerHTML = TABLIST.map((t,i) =>
     '<section class="tab-panel'+(i===0?' active':'')+'" id="panel-'+cssId(t.key)+'"></section>').join('');
@@ -1108,6 +1433,7 @@ function renderPanel(t){
   if (t.key === 'keywords')     { el.innerHTML = head(t)+keywordsMarkup();                          return; }
   if (t.key === 'wins')         { el.innerHTML = head(t)+winsMarkup();       wireWins(el);          return; }
   if (t.key === 'progress')     { el.innerHTML = head(t)+progressMarkup();   wireProgress(el);      return; }
+  if (t.key === 'admin')        { el.innerHTML = head(t)+adminMarkup();       wireAdmin(el);         return; }
 
   let body = (t.remote ? TABDOCS[t.key] : t.html) || '<p class="empty">Nothing here yet.</p>';
   const target = t.key === 'strategy' ? actionMonth() : null;
@@ -1119,6 +1445,203 @@ function renderPanel(t){
   el.innerHTML = head(t) + body;
   const go = el.querySelector('#goApprove');
   if (go) go.addEventListener('click', () => selectTab(target.key));
+}
+
+
+/* ---------------- admin (hub admins only) ----------------
+   Jose 03/10/2026. Visible to Jose, Jhen and Janice via tt_people.hub_admin, which is
+   deliberately narrower than ch_is_internal(): that is true for every active staff
+   member. Four jobs: say whether the client can see this hub yet, list what still has
+   to happen for them, show who changed what, and add a team member. */
+
+function fmtWhen(ts){
+  if (!ts) return '';
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-AU',{day:'2-digit',month:'2-digit'})
+       + ' ' + d.toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit'});
+}
+
+const EVENT_LABEL = {
+  topic_approved:'approved the topic', content_approved:'approved the content',
+  not_approved:'marked NOT approved', note_added:'left a note',
+  doc_added:'added a draft', published:'published it',
+  released_to_client:'released the hub to the client',
+  release_withdrawn:'withdrew the release'
+};
+
+function adminMarkup(){
+  const rel = RELEASED;
+  return ''
+  + '<div class="callout" style="border-color:' + (rel ? '#2f6b3a' : '#6b2b2b')
+    + ';background:' + (rel ? '#16241a' : '#2a1515') + '">'
+    + '<b>' + (rel ? 'This hub is RELEASED.' : 'This hub is NOT released.') + '</b> '
+    + (rel ? 'The client can sign in and see their plan.'
+           : 'A client who signs in sees a holding message, not the plan. Publishing the page does not release it.')
+    + '<button class="btn" type="button" id="relBtn" style="margin-left:12px">'
+    + (rel ? 'Withdraw release' : 'Release to client') + '</button>'
+    + '<span class="rejmsg" id="relMsg"></span>'
+  + '</div>'
+
+  + '<h3>What still has to happen</h3>'
+  + '<div class="rejbox" style="border-color:#3a3a56;background:#191826">'
+    + '<textarea id="actBody" rows="2" placeholder="What needs doing for this client?"></textarea>'
+    + '<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">'
+      + '<input id="actWho" placeholder="Who" style="flex:0 0 140px">'
+      + '<input id="actDue" type="date" style="flex:0 0 160px">'
+      + '<button class="btn" type="button" id="actAdd">Add</button>'
+      + '<span class="rejmsg" id="actMsg"></span>'
+    + '</div>'
+  + '</div>'
+  + '<div id="actList"></div>'
+
+  + '<h3>Change log</h3>'
+  + '<p class="caption">Every approval, rejection, note, draft and publish on this client. '
+    + 'Entries before 03/10/2026 have no name against them because the log did not record one.</p>'
+  + '<div id="evList"></div>'
+
+  + '<h3>Team</h3>'
+  + '<p class="caption">Anyone active here can open every hub. Only a hub admin sees this page.</p>'
+  + '<div id="staffList"></div>';
+}
+
+function actionsMarkup(){
+  if (!ACTIONS.length) return '<p class="empty">Nothing outstanding.</p>';
+  return '<table class="tbl"><thead><tr><th>What</th><th>Who</th><th>Due</th><th>Status</th><th></th></tr></thead><tbody>'
+  + ACTIONS.map(a =>
+      '<tr' + (a.status==='done' ? ' style="opacity:.55"' : '') + '>'
+      + '<td>' + esc(a.body) + '<div class="caption" style="margin:2px 0 0">added by '
+        + esc(a.created_name||'?') + ' ' + fmtWhen(a.created_at) + '</div></td>'
+      + '<td>' + esc(a.assigned_to||'—') + '</td>'
+      + '<td>' + (a.due_date||'—') + '</td>'
+      + '<td><select data-actst="'+a.id+'">'
+        + ['open','doing','done'].map(x =>
+            '<option value="'+x+'"'+(a.status===x?' selected':'')+'>'+x+'</option>').join('')
+        + '</select></td>'
+      + '<td><button class="notebtn" type="button" data-actdel="'+a.id+'">Remove</button></td>'
+      + '</tr>').join('')
+  + '</tbody></table>';
+}
+
+function eventsMarkup(){
+  if (!EVENTS.length) return '<p class="empty">Nothing logged yet.</p>';
+  return '<table class="tbl"><thead><tr><th>When</th><th>Who</th><th>What</th><th>Item</th></tr></thead><tbody>'
+  + EVENTS.map(e => {
+      const d = e.detail || {};
+      return '<tr><td style="white-space:nowrap">' + fmtWhen(e.created_at) + '</td>'
+      + '<td>' + esc(e.actor_name || '—') + '</td>'
+      + '<td>' + esc(EVENT_LABEL[e.kind] || e.kind)
+        + (e.kind==='not_approved' && d.reason
+            ? '<div class="caption" style="margin:2px 0 0;color:#ff9d9d">' + esc(d.reason) + '</div>' : '')
+        + (e.kind==='note_added' && d.note
+            ? '<div class="caption" style="margin:2px 0 0">' + esc(d.note) + '</div>' : '')
+      + '</td>'
+      + '<td>' + esc(d.title || '—') + '</td></tr>';
+    }).join('')
+  + '</tbody></table>';
+}
+
+function staffMarkup(){
+  return '<table class="tbl"><thead><tr><th>Name</th><th>Role</th><th>Admin</th></tr></thead><tbody>'
+  + STAFF.map(p => '<tr><td>' + esc(p.name) + '</td><td>' + esc(p.role_title||'—') + '</td>'
+      + '<td>' + (p.hub_admin ? 'yes' : '') + '</td></tr>').join('')
+  + '</tbody></table>'
+  + '<div class="rejbox" style="border-color:#3a3a56;background:#191826;margin-top:10px">'
+    + '<label>Add a team member. They get access to every hub.</label>'
+    + '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">'
+      + '<input id="mName" placeholder="Full name" style="flex:1 1 160px">'
+      + '<input id="mEmail" placeholder="email@readytorank.com.au" style="flex:1 1 200px">'
+      + '<input id="mRole" placeholder="Role" style="flex:1 1 120px">'
+      + '<label class="tickl"><input type="checkbox" id="mAdmin"> Hub admin</label>'
+      + '<button class="btn" type="button" id="mAdd">Add member</button>'
+      + '<span class="rejmsg" id="mMsg"></span>'
+    + '</div>'
+  + '</div>';
+}
+
+async function loadAdmin(){
+  const [ev, ac, st] = await Promise.all([
+    sb.from('ch_item_events').select('*').eq('client_id', CLIENT_ID)
+      .order('created_at', {ascending:false}).limit(200),
+    sb.from('ch_client_actions').select('*').eq('client_id', CLIENT_ID)
+      .order('status').order('created_at', {ascending:false}),
+    sb.from('tt_people').select('id,name,role_title,hub_admin').eq('active', true).order('name')
+  ]);
+  EVENTS = ev.data || []; ACTIONS = ac.data || []; STAFF = st.data || STAFF;
+}
+
+async function wireAdmin(el){
+  await loadAdmin();
+  const paint = () => {
+    el.querySelector('#actList').innerHTML = actionsMarkup();
+    el.querySelector('#evList').innerHTML  = eventsMarkup();
+    el.querySelector('#staffList').innerHTML = staffMarkup();
+    wireAdminRows(el, paint);
+  };
+  paint();
+
+  el.querySelector('#relBtn').addEventListener('click', async () => {
+    const msg = el.querySelector('#relMsg');
+    const next = !RELEASED;
+    if (next && !confirm('Release this hub to ' + CLIENT_NAME + '? They will be able to see their plan.')) return;
+    msg.textContent = 'Saving…';
+    const { error } = await sb.rpc('ch_set_released', { p_client: CLIENT_ID, p_released: next });
+    if (error) { msg.textContent = 'Could not change that.'; msg.style.color = '#ff9d9d'; return; }
+    RELEASED = next;
+    renderPanel(TABLIST.find(t => t.key === 'admin'));
+  });
+
+  el.querySelector('#actAdd').addEventListener('click', async () => {
+    const body = (el.querySelector('#actBody').value || '').trim();
+    const msg = el.querySelector('#actMsg');
+    if (!body) { msg.textContent = 'Type what needs doing.'; msg.style.color = '#ff9d9d'; return; }
+    msg.textContent = 'Saving…'; msg.style.color = '';
+    const { error } = await sb.from('ch_client_actions').insert({
+      client_id: CLIENT_ID, body,
+      assigned_to: (el.querySelector('#actWho').value || '').trim() || null,
+      due_date: el.querySelector('#actDue').value || null,
+      created_by: ME.id, created_name: ME.name });
+    if (error) { msg.textContent = 'Could not save that.'; msg.style.color = '#ff9d9d'; return; }
+    el.querySelector('#actBody').value = ''; el.querySelector('#actWho').value = '';
+    el.querySelector('#actDue').value = ''; msg.textContent = '';
+    await loadAdmin(); paint();
+  });
+
+  el.querySelector('#mAdd').addEventListener('click', async () => {
+    const msg = el.querySelector('#mMsg');
+    const name  = (el.querySelector('#mName').value  || '').trim();
+    const email = (el.querySelector('#mEmail').value || '').trim();
+    if (!name || !email.includes('@')) { msg.textContent = 'Name and a real email, please.'; msg.style.color='#ff9d9d'; return; }
+    msg.textContent = 'Adding…'; msg.style.color = '';
+    // Creating an auth user needs the service role, so it goes through an Edge Function.
+    const { data: { session } } = await sb.auth.getSession();
+    const res = await fetch(CFG.sbUrl + '/functions/v1/team-user', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + session.access_token },
+      body: JSON.stringify({ name, email, role_title: (el.querySelector('#mRole').value||'').trim(),
+                             hub_admin: el.querySelector('#mAdmin').checked })
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok) { msg.textContent = out.error || 'Could not add them.'; msg.style.color='#ff9d9d'; return; }
+    msg.textContent = 'Added. They sign in with a link sent to that address.';
+    el.querySelector('#mName').value=''; el.querySelector('#mEmail').value=''; el.querySelector('#mRole').value='';
+    await loadAdmin(); paint();
+  });
+}
+
+function wireAdminRows(el, paint){
+  el.querySelectorAll('[data-actst]').forEach(sel => sel.addEventListener('change', async () => {
+    const id = sel.dataset.actst, done = sel.value === 'done';
+    await sb.from('ch_client_actions').update({
+      status: sel.value,
+      done_at: done ? new Date().toISOString() : null,
+      done_by: done ? ME.id : null, done_name: done ? ME.name : null }).eq('id', id);
+    await loadAdmin(); paint();
+  }));
+  el.querySelectorAll('[data-actdel]').forEach(b => b.addEventListener('click', async () => {
+    if (!confirm('Remove this item?')) return;
+    await sb.from('ch_client_actions').delete().eq('id', b.dataset.actdel);
+    await loadAdmin(); paint();
+  }));
 }
 
 /* ---------------- month briefs ---------------- */
@@ -1328,6 +1851,9 @@ function itemCard(r, staff){
         + (assignDot(r, staff) ? '<span class="notedot"></span>' : '') + '</button>'
       + (r.stream === 'gbp' && r.post_body
           ? '<button class="notebtn seepost" type="button" data-gbp="'+id+'">See the post</button>' : '')
+      + (ARTICLES[r.id]
+          ? '<button class="notebtn readbtn" type="button" data-read="'+id+'">Read &amp; comment'
+            + (OPENCOMMENTS[r.id] ? '<span class="ccount">'+OPENCOMMENTS[r.id]+'</span>' : '') + '</button>' : '')
       + link(r.doc_url, '', 'Draft') + link(r.live_url, 'live', 'Live')
     + '</div></div>'
     + '<div class="ticks">'
@@ -1337,6 +1863,16 @@ function itemCard(r, staff){
       + '<label class="tickl"><input class="tick" type="checkbox" data-approve="'+id+'"'
         + (r.approved?' checked':'') + (canTick?'':' disabled')
         + ' title="'+(canTick?'Approve this item':(topicWaiting(r)?'Approve the topic first':'Not ready for approval yet'))+'"> Approve content</label>'
+      + '<label class="tickl no"><input class="tick" type="checkbox" data-reject="'+id+'"'
+        + (r.not_approved?' checked':'')
+        + ' title="Tell us what needs changing"> Not approved</label>'
+    + '</div>'
+    + '<div class="rejbox'+(r.not_approved?'':' hide')+'" data-rejbox="'+id+'">'
+      + '<label>Why not? We will not start on it until this is sorted.</label>'
+      + '<textarea data-rejwhy="'+id+'" rows="2" placeholder="What needs to change?">'
+      + esc(r.not_approved_reason||'') + '</textarea>'
+      + '<button class="btn" type="button" data-rejsave="'+id+'">Save reason</button>'
+      + '<span class="rejmsg" data-rejmsg="'+id+'"></span>'
     + '</div>'
     + assignPanel(r, staff)
     // Assignment moved into the Assign panel so there is one place to set it.
@@ -1426,10 +1962,47 @@ function wireMonthBrief(el, t){
     badge('Saved','ok'); refreshMonth(t);
   }));
 
+  /* Not approved. The tick only reveals the box; nothing is written until a reason is
+     saved, because the CHECK constraint rejects the flag without one and a silent
+     failure here would read to the client as "it saved". Ticking it also clears
+     Approve content, since the two are mutually exclusive in the database. */
+  el.querySelectorAll('[data-reject]').forEach(cb => cb.addEventListener('change', async () => {
+    const id = cb.dataset.reject;
+    const box = el.querySelector('[data-rejbox="'+id+'"]');
+    if (cb.checked) { box.classList.remove('hide'); el.querySelector('[data-rejwhy="'+id+'"]').focus(); return; }
+    cb.disabled = true; badge('Saving…');
+    const { error } = await sb.from('ch_items')
+      .update({ not_approved: false, not_approved_reason: null }).eq('id', id);
+    cb.disabled = false;
+    if (error) { cb.checked = true; badge('Could not save that.','err'); return; }
+    box.classList.add('hide');
+    const it = ITEMS.find(r => r.id === id);
+    it.not_approved = false; it.not_approved_reason = null;
+    badge('Saved','ok'); refreshMonth(t);
+  }));
+
+  el.querySelectorAll('[data-rejsave]').forEach(b => b.addEventListener('click', async () => {
+    const id = b.dataset.rejsave;
+    const why = (el.querySelector('[data-rejwhy="'+id+'"]').value || '').trim();
+    const msg = el.querySelector('[data-rejmsg="'+id+'"]');
+    if (why.length < 3) { msg.textContent = 'Tell us what needs changing.'; msg.style.color='#ff9d9d'; return; }
+    b.disabled = true; msg.textContent = 'Saving…'; msg.style.color='';
+    const { error } = await sb.from('ch_items')
+      .update({ not_approved: true, not_approved_reason: why, approved: false }).eq('id', id);
+    b.disabled = false;
+    if (error) { msg.textContent = 'Could not save that.'; msg.style.color='#ff9d9d'; return; }
+    const it = ITEMS.find(r => r.id === id);
+    it.not_approved = true; it.not_approved_reason = why; it.approved = false;
+    msg.textContent = 'Saved. We will come back to you on this.';
+    badge('Saved','ok'); refreshMonth(t);
+  }));
+
   el.querySelectorAll('[data-approve]').forEach(cb => cb.addEventListener('change', async () => {
     const id = cb.dataset.approve;
     cb.disabled = true; badge('Saving…');
-    const { error } = await sb.from('ch_items').update({ approved: cb.checked }).eq('id', id);
+    const { error } = await sb.from('ch_items')
+      .update(cb.checked ? { approved: true, not_approved: false, not_approved_reason: null }
+                         : { approved: false }).eq('id', id);
     cb.disabled = false;
     if (error) { cb.checked = !cb.checked; badge('Could not save that.','err'); return; }
     const it = ITEMS.find(r => r.id === id);
@@ -1508,6 +2081,8 @@ function wireMonthBrief(el, t){
     badge('Approved','ok');
     refreshMonth(t);
   }));
+
+  el.querySelectorAll('[data-read]').forEach(b => b.addEventListener('click', () => openArticle(b.dataset.read)));
 
   // Show a GBP post the way the client will see it on their profile.
   el.querySelectorAll('[data-gbp]').forEach(b => b.addEventListener('click', () => {
