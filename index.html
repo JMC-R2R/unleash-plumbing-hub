@@ -1906,6 +1906,9 @@ function expandTabs(){
         : allMonths.slice(-3);
     }
   }
+  /* Unleash exception (Jhen, 15/10/2026): the agreed plan runs to November 2026, so the client
+     sees nothing past it until the next plan is approved. Raise this when it is. */
+  months = months.filter(m => m <= '2026-11');
   CLIENT_MONTHS = months;
   // Staff get one inbox for every note, change request and comment, so nobody has to
   // open each month and card to find what the client said.
