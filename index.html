@@ -920,7 +920,6 @@
   /* LinkedIn pieces (11/10/2026): banner + article + promo post in Read & comment, feed preview. */
   .lix{font-family:var(--sans)}
   .libanner{display:block;width:100%;border-radius:10px;margin:0 0 22px}
-  .cardbanner{display:block;width:100%;max-width:360px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin:0 0 10px}
   .linote{background:#fff7e0;border:1px solid #f1d58a;color:#6b4e00;border-radius:10px;padding:10px 14px;font-size:14px;margin:0 0 18px}
   .lipromo{border:1px solid var(--line);background:var(--soft);border-radius:12px;padding:16px 18px;margin:30px 0 8px}
   .lipromo .lph{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
@@ -3283,8 +3282,6 @@ function itemCard(r, staff){
   const stage = r.approved ? ' s-done' : (isPlanned(r) && r.topic_approved ? ' s-topic' : '');
   let out = '<div class="card'+stage+'" id="'+esc(r.anchor)+'" data-id="'+id+'">'
     + '<div class="body">'
-    /* Unleash exception (Jhen, 15/10/2026): LinkedIn cards show their banner */
-    + (r.stream === 'linkedin' && r.banner_url ? '<img class="cardbanner" src="'+esc(r.banner_url)+'" alt="'+esc(am.banner_alt || r.title)+'" loading="lazy">' : '')
     + '<p class="ttl">'+esc(r.title)+'</p>'
     + '<div class="facts">'+facts.join('')+'</div>'
     + target + syncTag
